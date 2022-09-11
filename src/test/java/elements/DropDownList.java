@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.concurrent.TimeUnit;
+
 @Log4j2
 public class DropDownList extends BaseInputElement {
     private boolean isWaitForDOMUpdate = false;
@@ -43,6 +45,7 @@ public class DropDownList extends BaseInputElement {
         WebElement element = driver.findElement(elementLocator);
         scrollIntoView(element);
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        waitUtilBlockUINotDisplayed();
         element.click();
     }
 
@@ -57,6 +60,7 @@ public class DropDownList extends BaseInputElement {
                 }
                 wait.until(ExpectedConditions.visibilityOf(p));
                 wait.until(ExpectedConditions.elementToBeClickable(p));
+                waitUtilBlockUINotDisplayed();
                 p.click();
                 if (isWaitForDOMUpdate) {
                     wait.until(ExpectedConditions.stalenessOf(p));

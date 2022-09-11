@@ -33,6 +33,7 @@ public class DropdownLinkList extends BaseInputElement {
         final By itemLocator = By.xpath(
             String.format(DROPDOWN_ITEM_XPATH_EXPRESSION, optionToSelect));
         wait.until(ExpectedConditions.elementToBeClickable(itemLocator));
+        waitUtilBlockUINotDisplayed();
         driver.findElement(itemLocator).click();
     }
 
