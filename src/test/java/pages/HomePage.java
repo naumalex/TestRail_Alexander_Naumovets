@@ -10,6 +10,8 @@ public class HomePage extends BasePage {
     private static final String USER_DROPDOWN_LINK_ID ="navigation-user";
     private final static String PAGE_HEADER_XPATH_EXPRESSION =
         "//div[@id = 'content-header']//div[contains(text(), '%s')]";
+    private final static By SAVE_RESULTS_MESSAGE = By.cssSelector(
+        "#content-inner .message.message-success");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -29,4 +31,9 @@ public class HomePage extends BasePage {
     public By getPageHeaderLocator(String pageTitle) {
         return By.xpath(String.format(PAGE_HEADER_XPATH_EXPRESSION, pageTitle));
     }
+
+    public String getSaveResultsMessageText() {
+        return driver.findElement(SAVE_RESULTS_MESSAGE).getText();
+    }
+
 }

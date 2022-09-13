@@ -19,8 +19,6 @@ import java.util.List;
 public class TestCaseDetailsPage extends HomePage {
 
     private final static By TYPE_CELL_LOCATOR = By.cssSelector("#cell_type_id");
-    private final static By SAVE_RESULTS_MESSAGE = By.cssSelector(
-        "#content-inner .message.message-success");
     private final static By PAGE_HEADER_LOCATOR = By.cssSelector("#content-header .page_title");
     private final static By SECTION_LOCATOR = By.cssSelector(".content-breadcrumb");
 
@@ -32,10 +30,6 @@ public class TestCaseDetailsPage extends HomePage {
     public void waitForPageLoaded() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(TYPE_CELL_LOCATOR));
     }
-
-    public String getSaveResultsMessageText() {
-        return driver.findElement(SAVE_RESULTS_MESSAGE).getText();
-     }
 
      public TestCase getTestCaseInfo(Template template) {
         String title = driver.findElement(PAGE_HEADER_LOCATOR).getAttribute("innerText");
