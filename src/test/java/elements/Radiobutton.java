@@ -26,8 +26,9 @@ public class Radiobutton extends BaseElement {
 
     public void selectByVisibleText(String text) {
         By elementLocator = By.xpath(String.format(ELEMENT_XPATH_EXPRESSION, text));
-        wait.until(ExpectedConditions.elementToBeClickable(elementLocator));
-        driver.findElement(elementLocator).click();
+        WebElement element = driver.findElement(elementLocator);
+        waitForElementToBeClickable(element);
+        element.click();
     }
 
     public String getSelectedValue() {

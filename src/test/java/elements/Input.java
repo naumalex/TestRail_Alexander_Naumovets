@@ -19,9 +19,7 @@ public class Input extends BaseInputElement {
             return;
         }
         WebElement element = driver.findElement(inputLocator);
-        scrollIntoView(element);
-        wait.until(ExpectedConditions.visibilityOf(element));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        waitForElementToBeClickable(element);
         element.clear();
         element.sendKeys(text);
     }

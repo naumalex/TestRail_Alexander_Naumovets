@@ -39,4 +39,9 @@ public class BaseElement {
         }
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
+
+    public void waitForElementToBeClickable(WebElement element) {
+        scrollIntoView(element);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 }

@@ -28,7 +28,7 @@ public class Checkbox extends BaseInputElement {
         if (!(element.isSelected() == value)) {
             log.debug(String.format("Scroll to checkbox with locator = %s",
                 getElementLocator().toString()));
-            scrollIntoView(element);
+            waitForElementToBeClickable(element);
             log.debug(String.format("Click checkbox with locator = %s",
                 getElementLocator().toString()));
             element.click();

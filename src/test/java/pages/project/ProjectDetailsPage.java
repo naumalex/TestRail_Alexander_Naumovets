@@ -22,10 +22,7 @@ public class ProjectDetailsPage extends BasePage {
 
     public void clickAddTestCaseOnSidebar() {
         WebElement addLink = driver.findElement(TEST_CASES_ADD_LINK_ON_SIDEBAR_LOCATOR);
-        scrollIntoView(addLink);
-        wait.until(ExpectedConditions.elementToBeClickable(addLink));
+        waitForElementToBeClickable(addLink);
         addLink.click();
     }
-
-
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebElement;
 import utils.PropertyReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,8 +34,8 @@ public class LoginPage extends BasePage {
     }
 
     public void clickLogInButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(LOGIN_BUTTON_LOCATOR));
-        driver.findElement(LOGIN_BUTTON_LOCATOR).click();
+        WebElement element = driver.findElement(LOGIN_BUTTON_LOCATOR);
+        waitForElementToBeClickable(element);
+        element.click();
     }
-
 }

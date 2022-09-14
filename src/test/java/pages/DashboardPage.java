@@ -27,8 +27,7 @@ public class DashboardPage extends  HomePage {
         By projectItemLocator = By.xpath(
             String.format(PROJECT_ITEM_XPATH_EXPRESSION, projectName));
         WebElement element = driver.findElement(projectItemLocator);
-        scrollIntoView(element);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        waitForElementToBeClickable(element);
         element.click();
     }
 

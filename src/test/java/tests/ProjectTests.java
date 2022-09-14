@@ -10,7 +10,6 @@ import steps.ProjectsSteps;
 import utils.Api;
 import utils.PropertyReader;
 
-
 @Log4j2
 public class ProjectTests extends BaseTest {
 

@@ -23,7 +23,7 @@ public class BaseFormActionPage extends HomePage {
 
     public void save() {
         WebElement saveButton = driver.findElement(SUBMIT_BUTTON_LOCATOR);
-        scrollIntoView(saveButton);
+        waitForElementToBeClickable(saveButton);;
         saveButton.click();
     }
 }

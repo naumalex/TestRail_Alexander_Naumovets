@@ -33,16 +33,14 @@ public class ProjectsPage extends HomePage {
     public void clickDeleteProject(String projectName) {
         WebElement deleteIcon = driver.findElement(
             By.xpath(String.format(DELETE_PROJECT_LIST_ITEM_ICON_XPATH_EXPRESSION, projectName)));
-        scrollIntoView(deleteIcon);
-        wait.until(ExpectedConditions.elementToBeClickable(deleteIcon));
+        waitForElementToBeClickable(deleteIcon);
         deleteIcon.click();
     }
 
     public void clickEditProject(String projectName) {
         WebElement editIcon = driver.findElement(
             By.xpath(String.format(EDIT_PROJECT_LIST_ITEM_ICON_XPATH_EXPRESSION, projectName)));
-        scrollIntoView(editIcon);
-        wait.until(ExpectedConditions.elementToBeClickable(editIcon));
+        waitForElementToBeClickable(editIcon);
         editIcon.click();
     }
 }
