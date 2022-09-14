@@ -3,17 +3,17 @@ package steps;
 import models.TestCase;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import pages.ProjectPage;
+import pages.project.ProjectDetailsPage;
 import pages.test_case.AddTestCasePage;
 import pages.test_case.TestCaseDetailsPage;
 
 public class TestCaseSteps {
-    private final ProjectPage projectPage;
+    private final ProjectDetailsPage projectPage;
     private final AddTestCasePage addTestCasePage;
     private final TestCaseDetailsPage testCaseDetailsPage;
 
     public TestCaseSteps(WebDriver driver) {
-        projectPage = new ProjectPage(driver);
+        projectPage = new ProjectDetailsPage(driver);
         addTestCasePage = new AddTestCasePage(driver);
         testCaseDetailsPage = new TestCaseDetailsPage(driver);
     }

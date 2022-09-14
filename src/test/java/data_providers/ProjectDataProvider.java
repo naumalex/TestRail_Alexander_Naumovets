@@ -12,4 +12,11 @@ public class ProjectDataProvider {
             {ProjectFactory.getFullInfoProject()}
         };
     }
+
+    @DataProvider(name = "editProjectDataProvider")
+    public static Object[][] editProjectTestData() {
+        return new Object[][]{
+            {ProjectFactory.getFullInfoProject()}
+        };
+    }
 }

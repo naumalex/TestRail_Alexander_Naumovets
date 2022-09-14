@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class DashboardPage extends  BasePage {
+public class DashboardPage extends  HomePage {
 
     private static final By PROJECTS_PAGE_HEADER_LOCATOR =
         By.cssSelector("#content-header .page_title");

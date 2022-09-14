@@ -33,7 +33,7 @@ public class TestCasesTests extends BaseTest {
 
     @BeforeClass
     public void AddProjectIfNotExists() {
-        Api.AddProjectIfNotExists(PROJECT_NAME);
+        Api.addProjectIfNotExists(PROJECT_NAME);
     }
 
     @Test(dataProvider = "textTemplateTestCaseDataProvider",

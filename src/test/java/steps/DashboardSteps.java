@@ -4,21 +4,21 @@ import models.Project;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.DashboardPage;
-import pages.ProjectPage;
-import pages.project.AddProjectPage;
 import pages.project.ProjectDetailsPage;
+import pages.project.ProjectPage;
+import pages.project.ProjectsPage;
 
 public class DashboardSteps {
     private final DashboardPage dashboardPage;
-    private final ProjectPage projectPage;
-    private final AddProjectPage addProjectPage;
-    private final ProjectDetailsPage projectDetailsPage;
+    private final ProjectDetailsPage projectPage;
+    private final ProjectPage addProjectPage;
+    private final ProjectsPage projectDetailsPage;
 
     public DashboardSteps(WebDriver driver) {
         dashboardPage = new DashboardPage(driver);
-        projectPage = new ProjectPage(driver);
-        addProjectPage = new AddProjectPage(driver);
-        projectDetailsPage = new ProjectDetailsPage(driver);
+        projectPage = new ProjectDetailsPage(driver);
+        addProjectPage = new ProjectPage(driver);
+        projectDetailsPage = new ProjectsPage(driver);
     }
 
     public void openProject(String projectName) {
@@ -30,7 +30,7 @@ public class DashboardSteps {
         dashboardPage.clickAddProjectButton();
         addProjectPage.waitForPageLoaded();
         addProjectPage.fillForm(inputProject);
-        addProjectPage.clickAddProjectButton();
+        addProjectPage.saveProject();
         Assert.assertEquals(projectDetailsPage.getSaveResultsMessageText(),
             "Successfully added the new project.",
             "Message different from expected is shown after saving a test case");

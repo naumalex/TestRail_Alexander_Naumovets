@@ -14,7 +14,7 @@ public class Api {
     private static final Gson gson = new Gson();
     private static final ProjectAdaptor adaptor = new ProjectAdaptor();
 
-    public static void AddProjectIfNotExists(String projectName) {
+    public static void addProjectIfNotExists(String projectName) {
         Response<List<Project>> getAllResponse = adaptor.getAllProjects(HttpStatus.SC_OK);
         long count = getAllResponse.projects.stream()
             .filter(p -> p.getName().equals(projectName)).count();

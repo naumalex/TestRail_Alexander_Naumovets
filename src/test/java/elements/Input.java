@@ -7,8 +7,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Input extends BaseInputElement {
 
+    private final By inputLocator;
     public Input(WebDriver driver, String id) {
         super(driver, id);
+        inputLocator = getElementLocator();
     }
 
     public void setText(String text) {
@@ -16,10 +18,17 @@ public class Input extends BaseInputElement {
         {
             return;
         }
-        WebElement element = driver.findElement(By.cssSelector(String.format(ELEMENT_SELECTOR, id)));
+        WebElement element = driver.findElement(inputLocator);
         scrollIntoView(element);
         wait.until(ExpectedConditions.visibilityOf(element));
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        element.clear();
         element.sendKeys(text);
+    }
+
+    public String getText() {
+        WebElement element = driver.findElement(inputLocator);
+        scrollIntoView(element);
+        return element.getAttribute("value");
     }
 }

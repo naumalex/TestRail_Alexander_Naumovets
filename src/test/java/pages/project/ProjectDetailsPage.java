@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.HomePage;
+import pages.BasePage;
 
-public class ProjectDetailsPage extends HomePage {
-    private static final String PROJECT_LIST_ITEM_XPATH_EXPRESSION =
-        "//div[@id='content-inner']//td/a[text()='%s']";
+public class ProjectDetailsPage extends BasePage {
+    private static final By TEST_CASES_ADD_LINK_ON_SIDEBAR_LOCATOR =
+        By.cssSelector("#sidebar-cases-add");
 
     public ProjectDetailsPage(WebDriver driver) {
         super(driver);
@@ -16,13 +16,16 @@ public class ProjectDetailsPage extends HomePage {
 
     @Override
     public void waitForPageLoaded() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-            getPageHeaderLocator("Projects")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(
+            TEST_CASES_ADD_LINK_ON_SIDEBAR_LOCATOR));
     }
 
-    public boolean isProjectListItemPresent(String projectName) {
-        return !driver.findElements(
-            By.xpath(String.format(PROJECT_LIST_ITEM_XPATH_EXPRESSION, projectName))).isEmpty();
+    public void clickAddTestCaseOnSidebar() {
+        WebElement addLink = driver.findElement(TEST_CASES_ADD_LINK_ON_SIDEBAR_LOCATOR);
+        scrollIntoView(addLink);
+        wait.until(ExpectedConditions.elementToBeClickable(addLink));
+        addLink.click();
     }
+
 
 }

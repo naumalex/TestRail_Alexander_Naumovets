@@ -21,8 +21,7 @@ public class DropdownLinkList extends BaseInputElement {
     }
 
     private void expandListOfOptions() {
-       WebElement element = driver.findElement(By.cssSelector(
-           String.format(ELEMENT_SELECTOR, id)));
+       WebElement element = driver.findElement(getElementLocator());
        scrollIntoView(element);
        wait.until(ExpectedConditions.visibilityOf(element));
        wait.until(ExpectedConditions.elementToBeClickable(element));
