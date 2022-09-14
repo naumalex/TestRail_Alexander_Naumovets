@@ -5,7 +5,7 @@ import models.Project;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.DashboardPage;
-import pages.project.ProjectPage;
+import pages.form_action_pages.ProjectPage;
 import pages.project.ProjectsPage;
 
 public class ProjectsSteps {
@@ -42,7 +42,7 @@ public class ProjectsSteps {
         projectsPage.clickEditProject(inputProject.getName());
         projectPage.waitForPageLoaded();
         projectPage.fillForm(inputProject);
-        projectPage.saveProject();
+        projectPage.save();
 
         Assert.assertEquals(projectsPage.getSaveResultsMessageText(),
             "Successfully updated the project.",
@@ -54,6 +54,6 @@ public class ProjectsSteps {
         projectPage.waitForPageLoaded();
         Assert.assertEquals(projectPage.getProjectInfo(), inputProject,
             "Not all data have been correctly saved");
-        projectPage.saveProject();
+        projectPage.save();
     }
 }

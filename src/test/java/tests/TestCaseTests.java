@@ -3,12 +3,8 @@ package tests;
 import api.ProjectAdaptor;
 import com.google.gson.Gson;
 import data_providers.TestCaseDataProvider;
-import enums.project.SuiteMode;
 import lombok.extern.log4j.Log4j2;
-import models.Project;
 import models.TestCase;
-import models.api.Response;
-import org.apache.hc.core5.http.HttpStatus;
 import org.testng.annotations.AfterClass;
 import steps.TestCaseSteps;
 import utils.Api;
@@ -17,9 +13,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import steps.DashboardSteps;
 
-import java.util.List;
 @Log4j2
-public class TestCasesTests extends BaseTest {
+public class TestCaseTests extends BaseTest {
     public static final String PROJECT_NAME = PropertyReader.getProperty("test_rail.all.project_name");
     private DashboardSteps dashboardSteps;
     private TestCaseSteps testCaseSteps;
@@ -33,6 +28,7 @@ public class TestCasesTests extends BaseTest {
 
     @BeforeClass
     public void AddProjectIfNotExists() {
+        Api.deleteProjectIfExists(PROJECT_NAME);
         Api.addProjectIfNotExists(PROJECT_NAME);
     }
 

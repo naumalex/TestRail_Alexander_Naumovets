@@ -1,4 +1,4 @@
-package pages.project;
+package pages.form_action_pages;
 
 import elements.*;
 import enums.project.SuiteMode;
@@ -6,22 +6,16 @@ import models.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.internal.BaseAction;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.HomePage;
+import pages.form_action_pages.BaseFormActionPage;
 
-public class ProjectPage extends HomePage {
-    private static final By SUBMIT_BUTTON_LOCATOR = By.cssSelector("#accept");
-
+public class ProjectPage extends BaseFormActionPage {
     public ProjectPage(WebDriver driver) {
         super(driver);
     }
-
-    @Override
-    public void waitForPageLoaded() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-            SUBMIT_BUTTON_LOCATOR));
-    }
-
+    
     public void fillForm(Project inputProject) {
         new Input(driver, "name").setText(inputProject.getName());
         new Input(driver, "announcement").setText(inputProject.getAnnouncement());
@@ -43,11 +37,5 @@ public class ProjectPage extends HomePage {
             .suiteMode(suiteMode)
             .isTheProjectCompleted(isTheProjectCompleted)
             .build();
-    }
-
-    public void saveProject() {
-        WebElement addTestCaseButton = driver.findElement(SUBMIT_BUTTON_LOCATOR);
-        scrollIntoView(addTestCaseButton);
-        addTestCaseButton.click();
     }
 }
