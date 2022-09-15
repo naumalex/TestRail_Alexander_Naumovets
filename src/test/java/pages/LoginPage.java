@@ -34,8 +34,6 @@ public class LoginPage extends BasePage {
     }
 
     public void clickLogInButton() {
-        WebElement element = driver.findElement(LOGIN_BUTTON_LOCATOR);
-        waitForElementToBeClickable(element);
-        element.click();
+        waitForElementToBeClickable(LOGIN_BUTTON_LOCATOR).click();
     }
 }

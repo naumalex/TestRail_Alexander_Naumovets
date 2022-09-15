@@ -21,16 +21,13 @@ public class DropdownLinkList extends BaseInputElement {
     }
 
     private void expandListOfOptions() {
-       WebElement element = driver.findElement(getElementLocator());
-       waitForElementToBeClickable(element);
-       element.click();
+       waitForElementToBeClickable(getElementLocator()).click();
     }
 
     private void selectItem(String optionToSelect) {
         final By itemLocator = By.xpath(
             String.format(DROPDOWN_ITEM_XPATH_EXPRESSION, optionToSelect));
-        WebElement element = driver.findElement(itemLocator);
-        waitForElementToBeClickable(element);
+        WebElement element = waitForElementToBeClickable(itemLocator);
         waitUtilBlockUINotDisplayed();
         element.click();
     }

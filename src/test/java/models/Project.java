@@ -12,9 +12,9 @@ public class Project {
     String name;
     String announcement;
     @SerializedName(value = "show_announcement")
-    boolean isShowAnnouncement;
+    Boolean isShowAnnouncement;
     SuiteMode suiteMode;
     @SerializedName(value = "suite_mode")
     int suiteModeIndex; //used for API only
-    boolean isTheProjectCompleted;
+    Boolean isTheProjectCompleted;
 }

@@ -2,7 +2,6 @@ package pages.project;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.HomePage;
 
@@ -31,16 +30,15 @@ public class ProjectsPage extends HomePage {
     }
 
     public void clickDeleteProject(String projectName) {
-        WebElement deleteIcon = driver.findElement(
-            By.xpath(String.format(DELETE_PROJECT_LIST_ITEM_ICON_XPATH_EXPRESSION, projectName)));
-        waitForElementToBeClickable(deleteIcon);
-        deleteIcon.click();
+        By deleteIconLocator = By.xpath(
+            String.format(DELETE_PROJECT_LIST_ITEM_ICON_XPATH_EXPRESSION, projectName));
+        waitForElementToBeClickable(deleteIconLocator).click();
     }
 
     public void clickEditProject(String projectName) {
-        WebElement editIcon = driver.findElement(
-            By.xpath(String.format(EDIT_PROJECT_LIST_ITEM_ICON_XPATH_EXPRESSION, projectName)));
-        waitForElementToBeClickable(editIcon);
-        editIcon.click();
+        By editIconLocator = By.xpath(
+            String.format(EDIT_PROJECT_LIST_ITEM_ICON_XPATH_EXPRESSION, projectName));
+        waitForElementToBeClickable(editIconLocator)
+        .click();
     }
 }

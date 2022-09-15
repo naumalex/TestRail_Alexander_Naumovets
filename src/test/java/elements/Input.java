@@ -18,8 +18,7 @@ public class Input extends BaseInputElement {
         {
             return;
         }
-        WebElement element = driver.findElement(inputLocator);
-        waitForElementToBeClickable(element);
+        WebElement element = waitForElementToBeClickable(inputLocator);
         element.clear();
         element.sendKeys(text);
     }

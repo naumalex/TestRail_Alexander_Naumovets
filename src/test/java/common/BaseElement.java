@@ -40,8 +40,13 @@ public class BaseElement {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    public void waitForElementToBeClickable(WebElement element) {
-        scrollIntoView(element);
+    public WebElement waitForElementToBeClickable(By locator) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        WebElement element  = driver.findElement(locator);
+        if (!element.isDisplayed()) {
+            scrollIntoView(element);
+        }
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        return element;
     }
 }

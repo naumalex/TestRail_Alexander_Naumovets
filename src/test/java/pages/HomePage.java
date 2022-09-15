@@ -46,9 +46,7 @@ public class HomePage extends BasePage {
     }
 
     public void selectItemInSideNavigationMenu(String menuItem) {
-        WebElement element = driver.findElement(
-            By.xpath(String.format(SIDE_NAVIGATION_MENU_ITEM, menuItem)));
-        waitForElementToBeClickable(element);
-        element.click();
+        waitForElementToBeClickable(By.xpath(String.format(SIDE_NAVIGATION_MENU_ITEM, menuItem)))
+        .click();
     }
 }

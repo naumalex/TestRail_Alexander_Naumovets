@@ -26,9 +26,7 @@ public class DashboardPage extends  HomePage {
     public void clickProjectLink(String projectName) {
         By projectItemLocator = By.xpath(
             String.format(PROJECT_ITEM_XPATH_EXPRESSION, projectName));
-        WebElement element = driver.findElement(projectItemLocator);
-        waitForElementToBeClickable(element);
-        element.click();
+        waitForElementToBeClickable(projectItemLocator).click();
     }
 
     public void clickAddProjectButton() {

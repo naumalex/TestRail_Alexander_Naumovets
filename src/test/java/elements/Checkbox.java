@@ -23,14 +23,12 @@ public class Checkbox extends BaseInputElement {
         return element.isSelected();
     }
 
-    public void setValue(boolean value) {
-        WebElement element = driver.findElement(getElementLocator());
+    public void setValue(Boolean value) {
+        if (value == null) {
+            return;
+        }
+        WebElement element = waitForElementToBeClickable(getElementLocator());
         if (!(element.isSelected() == value)) {
-            log.debug(String.format("Scroll to checkbox with locator = %s",
-                getElementLocator().toString()));
-            waitForElementToBeClickable(element);
-            log.debug(String.format("Click checkbox with locator = %s",
-                getElementLocator().toString()));
             element.click();
         }
     }

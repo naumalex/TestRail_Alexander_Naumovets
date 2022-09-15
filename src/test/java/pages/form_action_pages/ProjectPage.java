@@ -19,9 +19,9 @@ public class ProjectPage extends BaseFormActionPage {
     public void fillForm(Project inputProject) {
         new Input(driver, "name").setText(inputProject.getName());
         new Input(driver, "announcement").setText(inputProject.getAnnouncement());
-        new Checkbox(driver, "show_announcement").setValue(inputProject.isShowAnnouncement());
+        new Checkbox(driver, "show_announcement").setValue(inputProject.getIsShowAnnouncement());
         new Radiobutton(driver).selectByEnumValue(inputProject.getSuiteMode());
-        new Checkbox(driver, "is_completed").setValue(inputProject.isTheProjectCompleted());
+        new Checkbox(driver, "is_completed").setValue(inputProject.getIsTheProjectCompleted());
     }
 
     public Project getProjectInfo() {
@@ -29,7 +29,7 @@ public class ProjectPage extends BaseFormActionPage {
         String announcement = new Input(driver, "announcement").getText();
         boolean isShowAnnouncement = new Checkbox(driver, "show_announcement").getValue();
         SuiteMode suiteMode = SuiteMode.fromString(new Radiobutton(driver).getSelectedValue());
-        boolean isTheProjectCompleted = new Checkbox(driver, "show_announcement").getValue();
+        boolean isTheProjectCompleted = new Checkbox(driver, "is_completed").getValue();
         return Project.builder()
             .name(name)
             .announcement(announcement)

@@ -51,8 +51,7 @@ public class DropDownList extends BaseElement {
     }
 
     private void expandListOfOptions() {
-        WebElement element = driver.findElement(dropdownLocator);
-        waitForElementToBeClickable(element);
+        WebElement element = waitForElementToBeClickable(dropdownLocator);
         waitUtilBlockUINotDisplayed();
         element.click();
     }

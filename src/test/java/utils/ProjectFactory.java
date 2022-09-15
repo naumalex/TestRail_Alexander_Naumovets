@@ -16,10 +16,11 @@ public class ProjectFactory {
     public static Project getFullInfoProject() {
         return Project.builder()
             .name(PropertyReader.getProperty("test_rail.all.project_name"))
-            .announcement(faker.harryPotter().quote()/*PropertyReader.getProperty("test_rail.project.announcement")*/)
+            .announcement(faker.harryPotter().quote())
             .isShowAnnouncement(true)
-            .isTheProjectCompleted(true)
             .suiteMode(SuiteMode.USE_SINGLE_REPOSITORY_WITH_BASE_LINE_SUPPORT)
             .build();
     }
+
+
 }
