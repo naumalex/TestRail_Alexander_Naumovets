@@ -1,4 +1,4 @@
-package pages.test_case;
+package pages.form_action_pages;
 
 import elements.DropDownList;
 import elements.Input;
@@ -14,23 +14,16 @@ import pages.HomePage;
 
 import java.util.List;
 
-public class AddTestCasePage extends HomePage {
+public class TestCasePage extends BaseFormActionPage {
 
     private static final By ADD_THE_FIRST_STEP_LINK_LOCATOR = By.xpath(
         "//div[@id = 'custom_steps_separated_container']" +
             "//a[text()='Add the first step']");
     private static final By ADD_STEP_LINK_LOCATOR = By.xpath(
         "//a[@class='addStep' and text() = 'Add Step']");
-    private static final By ADD_TEST_CASE_BUTTON_LOCATOR = By.cssSelector("#accept");
 
-    public AddTestCasePage(WebDriver driver) {
+    public TestCasePage(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public void waitForPageLoaded() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-            getPageHeaderLocator("Add Test Case")));
     }
 
     public void fillForm(TestCase inputTestCase) {
@@ -60,12 +53,6 @@ public class AddTestCasePage extends HomePage {
         new Input(driver, "custom_steps_display").setText(inputTestCase.getSteps());
         new Input(driver, "custom_expected_display").setText(inputTestCase.getExpectedResult());
         fillSteps(inputTestCase.getStepsStructured());
-    }
-
-    public void clickAddTestCaseButton() {
-        WebElement addTestCaseButton = driver.findElement(ADD_TEST_CASE_BUTTON_LOCATOR);
-        scrollIntoView(addTestCaseButton);
-        addTestCaseButton.click();
     }
 
     private void clickAddTheFirstStepLink() {

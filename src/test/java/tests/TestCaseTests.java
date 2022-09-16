@@ -1,28 +1,35 @@
 package tests;
 
+import api.ProjectAdaptor;
+import com.google.gson.Gson;
 import data_providers.TestCaseDataProvider;
+import lombok.extern.log4j.Log4j2;
 import models.TestCase;
+import org.testng.annotations.AfterClass;
 import steps.TestCaseSteps;
+import utils.Api;
 import utils.PropertyReader;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import steps.DashboardSteps;
 
-public class TestCasesTests extends BaseTest {
+@Log4j2
+public class TestCaseTests extends BaseTest {
     public static final String PROJECT_NAME = PropertyReader.getProperty("test_rail.all.project_name");
     private DashboardSteps dashboardSteps;
     private TestCaseSteps testCaseSteps;
-
+    private final Gson gson = new Gson();
+    private final ProjectAdaptor adaptor = new ProjectAdaptor();
     @BeforeClass
     public void initialize() {
         dashboardSteps = new DashboardSteps(driver);
         testCaseSteps = new TestCaseSteps(driver);
     }
 
-    @BeforeMethod
+    @BeforeClass
     public void AddProjectIfNotExists() {
-        //Add project with name = PROJECT_NAME if it does not exist using API
+        Api.deleteProjectIfExists(PROJECT_NAME);
+        Api.addProjectIfNotExists(PROJECT_NAME);
     }
 
     @Test(dataProvider = "textTemplateTestCaseDataProvider",
@@ -46,7 +53,8 @@ public class TestCasesTests extends BaseTest {
         testCaseSteps.addTestCaseViaSideBar(inputTestCase);
     }
 
-
-
-
+    @AfterClass
+    public void deleteTestProject() {
+        Api.deleteProjectIfExists(PROJECT_NAME);
+    }
 }

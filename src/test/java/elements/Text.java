@@ -11,8 +11,7 @@ public class Text extends BaseInputElement {
     }
 
     public String getText() {
-        WebElement textElement = driver.findElement(
-            By.cssSelector(String.format(ELEMENT_SELECTOR, id)));
+        WebElement textElement = driver.findElement(getElementLocator());
         scrollIntoView(textElement);
         String innerText = textElement.getAttribute("innerText");
         String text = innerText.substring(innerText.lastIndexOf("\n") + 1);
