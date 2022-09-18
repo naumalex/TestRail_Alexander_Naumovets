@@ -7,18 +7,21 @@ import enums.test_case.Type;
 import models.TestCase;
 import models.TestStep;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class TestCaseFactory {
     public static TestCase getMandatoryInfoOnlyTestCaseTextTemplate() {
         return TestCase.builder()
-            .title(PropertyReader.getProperty("test_rail.test_case.text.title"))
+            .title(PropertyReader.getProperty("test_rail.test_case.text.title") + Utils.getDateTime())
             .build();
     }
 
     public static TestCase getTextTemplateFullInfoTestCase() {
         return TestCase.builder()
-            .title(PropertyReader.getProperty("test_rail.test_case.text.title"))
+            .title(PropertyReader.getProperty("test_rail.test_case.text.title")
+                + Utils.getDateTime())
             .section(PropertyReader.getProperty("test_rail.test_case.text.section"))
             .template(Template.fromString(PropertyReader.getProperty(
                 "test_rail.test_case.text.template")))
@@ -38,7 +41,7 @@ public class TestCaseFactory {
 
     public static TestCase getStepsTemplateFullInfoTestCase() {
         return TestCase.builder()
-            .title(PropertyReader.getProperty("test_rail.test_case.text.title"))
+            .title(PropertyReader.getProperty("test_rail.test_case.text.title") + Utils.getDateTime())
             .section(PropertyReader.getProperty("test_rail.test_case.text.section"))
             .template(Template.fromString  (PropertyReader.getProperty(
                 "test_rail.test_case.steps.template")))
@@ -73,7 +76,7 @@ public class TestCaseFactory {
 
     public static TestCase getExploratorySessionFullInfoTestCase() {
         return TestCase.builder()
-            .title(PropertyReader.getProperty("test_rail.test_case.text.title"))
+            .title(PropertyReader.getProperty("test_rail.test_case.text.title")  + Utils.getDateTime())
             .section(PropertyReader.getProperty("test_rail.test_case.text.section"))
             .template(Template.fromString  (PropertyReader.getProperty(
                 "test_rail.test_case.exploratory_session.template")))
@@ -88,5 +91,16 @@ public class TestCaseFactory {
             .mission(PropertyReader.getProperty("test_rail.test_case.exploratory_session.mission"))
             .goals(PropertyReader.getProperty("test_rail.test_case.exploratory_session.goals"))
             .build();
+    }
+
+    public static List<TestCase> getTestCasesList() {
+        List testCases = new ArrayList<TestCase>();
+        TestCase testCase;
+        for ( int i = 0; i < 3; i++) {
+            testCase = getMandatoryInfoOnlyTestCaseTextTemplate();
+            testCase.setTitle(testCase.getTitle() + " " + i);
+            testCases.add(testCase);
+        }
+        return testCases;
     }
 }

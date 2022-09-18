@@ -26,7 +26,6 @@ public class TestCase {
     private String reference;
     private AutomationType automationType;
     private String preconditions;
-    private String postconditions;
     private String mission;
     private String goals;
     private String steps;

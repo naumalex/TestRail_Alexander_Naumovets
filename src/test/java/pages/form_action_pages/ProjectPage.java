@@ -3,13 +3,7 @@ package pages.form_action_pages;
 import elements.*;
 import enums.project.SuiteMode;
 import models.Project;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.internal.BaseAction;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.HomePage;
-import pages.form_action_pages.BaseFormActionPage;
 
 public class ProjectPage extends BaseFormActionPage {
     public ProjectPage(WebDriver driver) {

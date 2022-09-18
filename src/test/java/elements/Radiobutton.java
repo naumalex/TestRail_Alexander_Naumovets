@@ -9,9 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Radiobutton extends BaseElement {
     private static final String ELEMENT_XPATH_EXPRESSION =
-        "//div[@class = 'column project-type']//label/strong[text()='%s']";
+        "//div[@class = 'radio']/label/strong[text()='%s']";
     private final static By SELECTED_VALUE_LOCATOR = By.xpath(
-        "//div[@class = 'column project-type']/div[@class='radio']//input[@checked = 'checked']" +
+        "//div[@class='radio']//input[@checked = 'checked']" +
             "/preceding-sibling::strong");
     public Radiobutton(WebDriver driver) {
         super(driver);

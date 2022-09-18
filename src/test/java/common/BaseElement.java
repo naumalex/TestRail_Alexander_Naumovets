@@ -47,6 +47,7 @@ public class BaseElement {
             scrollIntoView(element);
         }
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        waitUtilBlockUINotDisplayed();
         return element;
     }
 }

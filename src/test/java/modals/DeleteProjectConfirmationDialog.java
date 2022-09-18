@@ -6,12 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class DeleteConfirmationDialog extends BaseElement {
+public class DeleteProjectConfirmationDialog extends BaseElement {
 
     private static final By CONFIRMATION_CHECKBOX = By.cssSelector("#deleteDialog div.checkbox");
     private static final By CONFIRMATION_DIALOG_OK = By.cssSelector("#deleteDialog a.button-ok");
 
-    public DeleteConfirmationDialog(WebDriver driver) {
+    public DeleteProjectConfirmationDialog(WebDriver driver) {
         super(driver);
     }
 

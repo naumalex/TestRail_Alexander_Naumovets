@@ -12,6 +12,8 @@ public class DashboardPage extends  HomePage {
     private static final String PROJECT_ITEM_XPATH_EXPRESSION =
         "//div[@id='content_container']//a[text() = '%s']";
     private static final By ADD_PROJECT_BUTTON_LOCATOR = By.cssSelector("#sidebar-projects-add");
+    private static final By TEST_RUN_VIEW_ALL_LINK =
+        By.cssSelector("#sidebar-runs-viewall");
 
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -26,10 +28,16 @@ public class DashboardPage extends  HomePage {
     public void clickProjectLink(String projectName) {
         By projectItemLocator = By.xpath(
             String.format(PROJECT_ITEM_XPATH_EXPRESSION, projectName));
+     //   WebElement element = waitForElementToBeClickable(projectItemLocator);
+      //  scrollIntoView(element);
         waitForElementToBeClickable(projectItemLocator).click();
     }
 
     public void clickAddProjectButton() {
-        driver.findElement(ADD_PROJECT_BUTTON_LOCATOR).click();
+        waitForElementToBeClickable(ADD_PROJECT_BUTTON_LOCATOR).click();
+    }
+
+    public void clickTestRunsViewAllLink() {
+        waitForElementToBeClickable(TEST_RUN_VIEW_ALL_LINK).click();
     }
 }
