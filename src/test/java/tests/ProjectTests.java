@@ -39,7 +39,7 @@ public class ProjectTests extends BaseTest {
 
     @Test (retryAnalyzer = Retry.class,
         groups = {"all", "project"}, description = "Delete project. " +
-        "verify that correct message about successful deleting is shown ." +
+        "Verify that correct message about successful deleting is shown ." +
         "Verify that the project disappeared from the Projects page.")
     public void deleteProject() {
         String projectName = PropertyReader.getProperty("test_rail.all.project_name")
@@ -55,7 +55,7 @@ public class ProjectTests extends BaseTest {
         description = "Edit a project. Verify that correct message about successful update is shown. " +
             "Verify that name of the modified project has been updated in the Projects list. " +
             "Open the project window again. " +
-            "Verify that entered in the previous step data was correctly saved.  ")
+            "Verify that entered in the previous step data was correctly saved.")
     public void alterProject(Project inputProject) {
         String projectName = PropertyReader.getProperty("test_rail.all.project_name")
             + Utils.getDateTime();
