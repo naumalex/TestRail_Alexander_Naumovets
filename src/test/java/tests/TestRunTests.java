@@ -64,6 +64,6 @@ public class TestRunTests extends BaseTest {
         testCases.stream().forEach(projectDetailsSteps::addTestCaseViaSideBar);
         projectDetailsSteps.addTestRunViaSideBar(inputTestRun);
         testRunAndResultsSteps.addTestResult(testCases.get(0).getTitle(), TestResult.PASSED);
-        ApiUtils.deleteProjectsIfExists(PROJECT_NAME);
+        ApiUtils.deleteProjectsIfExists(projectName);
     }
 }
