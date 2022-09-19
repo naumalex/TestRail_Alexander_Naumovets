@@ -59,7 +59,7 @@ public class TestRunTests extends BaseTest {
         ApiUtils.addProjectIfNotExists(projectName);
         ApiUtils.addMilestoneIfNotExist(projectName,
             PropertyReader.getProperty("test_rail.test_run.milestone"));
-        driver.navigate().refresh();
+        dashboardSteps.reloadPage();
         dashboardSteps.openProject(projectName);
         testCases.stream().forEach(projectDetailsSteps::addTestCaseViaSideBar);
         projectDetailsSteps.addTestRunViaSideBar(inputTestRun);
