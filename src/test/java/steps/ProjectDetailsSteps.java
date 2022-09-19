@@ -13,6 +13,8 @@ import pages.list_pages.TestCasesPage;
 import pages.ProjectDetailsPage;
 import pages.TestCaseDetailsPage;
 
+import java.util.List;
+
 @Log4j2
 public class ProjectDetailsSteps {
     private final ProjectDetailsPage projectDetailsPage;
@@ -55,6 +57,9 @@ public class ProjectDetailsSteps {
         projectDetailsPage.waitForPageLoaded();
     }
 
+    public void addTestCasesViaSideBar(List<TestCase> testCases) {
+        testCases.stream().forEach(this::addTestCaseViaSideBar);
+    }
     @Step
     public void addTestRunViaSideBar(TestRun inputTestRun) {
         log.info("Click Add Test Case link on sidebar");

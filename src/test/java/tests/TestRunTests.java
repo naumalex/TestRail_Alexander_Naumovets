@@ -6,7 +6,6 @@ import listeners.Retry;
 import models.TestCase;
 import models.TestRun;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import steps.DashboardSteps;
 import steps.ProjectDetailsSteps;
@@ -41,9 +40,9 @@ public class TestRunTests extends BaseTest {
         ApiUtils.addProjectIfNotExists(projectName);
         ApiUtils.addMilestoneIfNotExist(projectName,
             PropertyReader.getProperty("test_rail.test_run.milestone"));
-        driver.navigate().refresh();
+        dashboardSteps.reloadPage();
         dashboardSteps.openProject(projectName);
-        testCases.stream().forEach(projectDetailsSteps::addTestCaseViaSideBar);
+        projectDetailsSteps.addTestCasesViaSideBar(testCases);
         projectDetailsSteps.addTestRunViaSideBar(inputTestRun);
         testRunAndResultsSteps.verifyListOfTestCasesIncludedInTestRun(testCases);
         ApiUtils.deleteProjectsIfExists(projectName);

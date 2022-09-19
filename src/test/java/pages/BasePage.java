@@ -10,4 +10,5 @@ public abstract class BasePage extends BaseElement {
     }
 
     public abstract void waitForPageLoaded();
+
 }

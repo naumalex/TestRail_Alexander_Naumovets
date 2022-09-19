@@ -11,13 +11,14 @@ import pages.form_action_pages.ProjectPage;
 import pages.list_pages.ProjectsPage;
 
 @Log4j2
-public class DashboardSteps {
+public class DashboardSteps extends BaseStep {
     private final DashboardPage dashboardPage;
     private final ProjectDetailsPage projectDetailsPage;
     private final ProjectPage projectPage;
     private final ProjectsPage projectsPage;
 
     public DashboardSteps(WebDriver driver) {
+        super(driver);
         projectDetailsPage = new ProjectDetailsPage(driver);
         dashboardPage = new DashboardPage(driver);
         projectPage = new ProjectPage(driver);
