@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import steps.DashboardSteps;
 import steps.ProjectsSteps;
 import utils.ApiUtils;
-import utils.PropertyReader;
 import utils.Utils;
 
 @Log4j2
@@ -39,6 +38,7 @@ public class ProjectTests extends BaseTest {
         ApiUtils.addProjectIfNotExists("To avoid first project specific behaviour");
         dashboardSteps.addProject(inputProject);
         projectName = inputProject.getName();//to delete the added project in AfterMethod
+        log.info("added " + inputProject.getName() + " " + projectName);
     }
 
     @Test (retryAnalyzer = Retry.class,
@@ -46,9 +46,6 @@ public class ProjectTests extends BaseTest {
         "Verify that correct message about successful deleting is shown ." +
         "Verify that the project disappeared from the Projects page.")
     public void deleteProject() {
-        String projectName = PropertyReader.getProperty("test_rail.all.project_name")
-            + Utils.getDateTime();
-        ApiUtils.addProjectIfNotExists(projectName);
         projectsSteps.deleteProject(projectName);
     }
 
@@ -61,20 +58,17 @@ public class ProjectTests extends BaseTest {
             "Open the project window again. " +
             "Verify that entered in the previous step data was correctly saved.")
     public void alterProject(Project inputProject) {
-        String projectName = PropertyReader.getProperty("test_rail.all.project_name")
-            + Utils.getDateTime();
-        ApiUtils.addProjectIfNotExists(projectName);
         projectsSteps.editProject(projectName, inputProject);
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void ensureUniqueProject() {
         projectName = PROJECT_NAME + Utils.getDateTime();
         ApiUtils.addProjectIfNotExists(projectName);
         dashboardSteps.reloadPage();
     }
 
-    @AfterMethod(onlyForGroups = {"needToDeleteAddedData"})
+    @AfterMethod(alwaysRun = true)
     public void deleteAddedTestData() {
         ApiUtils.deleteProjectsIfExists(projectName);
     }

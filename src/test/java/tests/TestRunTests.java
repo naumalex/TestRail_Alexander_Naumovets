@@ -38,12 +38,10 @@ public class TestRunTests extends BaseTest {
             "Verify that the message about successful test run is shown." +
             "Verify that all the 3 added test cases are included in the test run.")
     public void addTestRunTest(List<TestCase> testCases, TestRun inputTestRun) {
-        ensureUniqueProjectWithMilestone();
         dashboardSteps.openProject(projectName);
         projectDetailsSteps.addTestCasesViaSideBar(testCases);
         projectDetailsSteps.addTestRunViaSideBar(inputTestRun);
         testRunAndResultsSteps.verifyListOfTestCasesIncludedInTestRun(testCases);
-        deleteAddedTestData();
     }
 
     @Test(dataProvider = "testRunDataProvider", dataProviderClass = TestRunDataProvider.class,
@@ -53,14 +51,12 @@ public class TestRunTests extends BaseTest {
             " Project Details page. Mark the first test case as Passed." +
             "Verify that summary panek shows the updated value for number of passed test cases.")
     public void addTestResultToTestCasesInTestRun(List<TestCase> testCases, TestRun inputTestRun) {
-        ensureUniqueProjectWithMilestone();
         dashboardSteps.openProject(projectName);
         projectDetailsSteps.addTestCasesViaSideBar(testCases);
         projectDetailsSteps.addTestRunViaSideBar(inputTestRun);
         testRunAndResultsSteps.addTestResult(testCases.get(0).getTitle(), TestResult.PASSED);
-        deleteAddedTestData();
     }
-   @BeforeMethod
+   @BeforeMethod(alwaysRun = true)
     public void ensureUniqueProjectWithMilestone() {
        projectName = PROJECT_NAME + Utils.getDateTime();
        ApiUtils.addProjectIfNotExists(projectName);
@@ -69,7 +65,7 @@ public class TestRunTests extends BaseTest {
        dashboardSteps.reloadPage();
    }
 
-   @AfterMethod
+   @AfterMethod(alwaysRun = true)
    public void deleteAddedTestData() {
         ApiUtils.deleteProjectsIfExists(projectName);
     }

@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import steps.LoginSteps;
-import utils.Utils;
 
 import java.util.concurrent.TimeUnit;
 
