@@ -98,8 +98,4 @@ public class TestCaseTests extends BaseTest {
         projectDetailsSteps.openTestCasesPage();
         testCasesSteps.deleteTestCase(inputAddTestCase.getTitle());
     }
-    @AfterClass(alwaysRun = true)
-    public void deleteTestProject() {
-        ApiUtils.deleteProjectsIfExists(PROJECT_NAME);
-    }
 }
