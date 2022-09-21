@@ -2,7 +2,6 @@ package tests;
 
 import data_providers.ProjectDataProvider;
 import listeners.Retry;
-import lombok.extern.log4j.Log4j2;
 import models.Project;
 import org.testng.annotations.*;
 import steps.DashboardSteps;
@@ -10,7 +9,6 @@ import steps.ProjectsSteps;
 import utils.ApiUtils;
 import utils.Utils;
 
-@Log4j2
 public class ProjectTests extends BaseTest {
 
     private DashboardSteps dashboardSteps;
