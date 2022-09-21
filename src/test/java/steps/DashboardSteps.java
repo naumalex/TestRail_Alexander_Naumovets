@@ -44,7 +44,7 @@ public class DashboardSteps extends BaseStep {
         Assert.assertEquals(projectsPage.getSaveResultsMessageText(),
             "Successfully added the new project.",
             "Message different from expected is shown after saving a test case");
-        log.info(String.format("Verify that the project %s disappeared from the Projects list.",
+        log.info(String.format("Verify that the project %s added to the Projects list.",
             inputProject.getName()));
         Assert.assertTrue(projectsPage
             .isItemPresent(inputProject.getName()),

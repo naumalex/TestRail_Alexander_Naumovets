@@ -38,6 +38,14 @@ public class ApiUtils {
         projects.stream().forEach(p -> adaptor.deleteProject(HttpStatus.SC_OK, p.toString()));
     }
 
+    public static void deleteAllProjects() {
+        log.info("Delete all projects.");
+        Response<List<Project>> getAllResponse = adaptor.getAllProjects(HttpStatus.SC_OK);
+        List<Integer> projects= getAllResponse.projects.stream()
+            .map(Project::getId).toList();
+        projects.stream().forEach(p -> adaptor.deleteProject(HttpStatus.SC_OK, p.toString()));
+    }
+
     public static void addMilestoneIfNotExist(String projectName, String milestoneName) {
         final MilestoneAdaptor adaptor = new MilestoneAdaptor();
         int projectId = getProjects(projectName).stream().map(Project::getId).findFirst().orElse(0);

@@ -38,11 +38,10 @@ public class ProjectTests extends BaseTest {
         ApiUtils.addProjectIfNotExists("To avoid first project specific behaviour");
         dashboardSteps.addProject(inputProject);
         projectName = inputProject.getName();//to delete the added project in AfterMethod
-        log.info("added " + inputProject.getName() + " " + projectName);
     }
 
     @Test (retryAnalyzer = Retry.class,
-        groups = {"all", "project"}, description = "Delete project. " +
+        groups = {"all", "project", "needToAddData"}, description = "Delete project. " +
         "Verify that correct message about successful deleting is shown ." +
         "Verify that the project disappeared from the Projects page.")
     public void deleteProject() {
@@ -52,7 +51,7 @@ public class ProjectTests extends BaseTest {
     @Test(retryAnalyzer = Retry.class,
         dataProvider = "editProjectDataProvider",
         dataProviderClass = ProjectDataProvider.class,
-        groups = {"all", "project", "needToDeleteAddedData"},
+        groups = {"all", "project", "needToDeleteAddedData", "needToAddData"},
         description = "Edit a project. Verify that correct message about successful update is shown. " +
             "Verify that name of the modified project has been updated in the Projects list. " +
             "Open the project window again. " +
@@ -61,14 +60,14 @@ public class ProjectTests extends BaseTest {
         projectsSteps.editProject(projectName, inputProject);
     }
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true, onlyForGroups = "needToAddData")
     public void ensureUniqueProject() {
         projectName = PROJECT_NAME + Utils.getDateTime();
         ApiUtils.addProjectIfNotExists(projectName);
         dashboardSteps.reloadPage();
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true, onlyForGroups = "needToDeleteAddedData")
     public void deleteAddedTestData() {
         ApiUtils.deleteProjectsIfExists(projectName);
     }
