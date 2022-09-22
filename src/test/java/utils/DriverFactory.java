@@ -17,6 +17,7 @@ public class DriverFactory {
                 options.addArguments("--ignore-certificate-errors");
                 options.addArguments("--disable-popup-blocking");
                 options.addArguments("--disable-notifications");
+                options.addArguments("--headless");
                 driver = new ChromeDriver(options);
                 break;
             case "FIREFOX":

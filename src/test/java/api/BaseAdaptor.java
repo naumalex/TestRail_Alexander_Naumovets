@@ -15,12 +15,14 @@ public class BaseAdaptor {
         public String get(String endpoint, int statusCode) {
             return given()
                 .header("Content-Type", "application/json")
+                .log().all()
                 .auth()
                 .preemptive()
                 .basic(EMAIL, ACCESS_TOKEN)
                 .when()
                 .get(BASE_URL + endpoint)
                 .then()
+                .log().all()
                 .statusCode(statusCode)
                 .extract().body().asString();
         }
@@ -28,6 +30,7 @@ public class BaseAdaptor {
         public String post(String endpoint, int statusCode, String requestBody) {
             return given()
                 .header("Content-Type", "application/json")
+                .log().all()
                 .auth()
                 .preemptive()
                 .basic(EMAIL, ACCESS_TOKEN)
@@ -35,6 +38,7 @@ public class BaseAdaptor {
                 .when()
                 .post(BASE_URL + endpoint)
                 .then()
+                .log().all()
                 .statusCode(statusCode)
                 .extract().body().asString();
         }
