@@ -16,7 +16,7 @@ public class BaseElement {
 
     public BaseElement(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 30);
+        wait = new WebDriverWait(driver, 60);
 
     }
 
@@ -47,6 +47,7 @@ public class BaseElement {
             scrollIntoView(element);
         }
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        waitUtilBlockUINotDisplayed();
         return element;
     }
 }

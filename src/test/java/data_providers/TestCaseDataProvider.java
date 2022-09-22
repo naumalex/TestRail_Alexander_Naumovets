@@ -19,4 +19,14 @@ public class TestCaseDataProvider {
     public static Object[][] exploratorySessionTemplateData() {
         return new Object[][]{{TestCaseFactory.getExploratorySessionFullInfoTestCase()}};
     }
+
+    @DataProvider(name = "editTextTemplateTestCaseDataProvider")
+    public static Object[][] editTextTemplateData() {
+        return new Object[][]{
+            {
+                TestCaseFactory.getMandatoryInfoOnlyTestCaseTextTemplate(),
+                TestCaseFactory.getTextTemplateFullInfoTestCase()
+            }
+        };
+    }
 }

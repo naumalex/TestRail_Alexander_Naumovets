@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Project tests" parallel="classes" thread-count="3">
+    <parameter name="browser" value="chrome"></parameter>
+    <listeners>
+        <listener class-name="listeners.TestExecutionListener"></listener>
+    </listeners>
+    <test name="Project tests">
+        <groups>
+            <run>
+                <include name="project"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="tests"></package>
+        </packages>
+    </test>
+</suite>

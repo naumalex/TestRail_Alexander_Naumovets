@@ -18,11 +18,9 @@ public class BaseAdaptor {
                 .auth()
                 .preemptive()
                 .basic(EMAIL, ACCESS_TOKEN)
-                .log().all()
                 .when()
                 .get(BASE_URL + endpoint)
                 .then()
-                .log().all()
                 .statusCode(statusCode)
                 .extract().body().asString();
         }
@@ -34,40 +32,9 @@ public class BaseAdaptor {
                 .preemptive()
                 .basic(EMAIL, ACCESS_TOKEN)
                 .body(requestBody)
-                .log().all()
                 .when()
                 .post(BASE_URL + endpoint)
                 .then()
-                .log().all()
-                .statusCode(statusCode)
-                .extract().body().asString();
-        }
-
-        public String delete(String endpoint, int statusCode) {
-            return given()
-                .header("Content-Type", "application/json")
-                .auth()
-                .preemptive()
-                .basic(EMAIL, ACCESS_TOKEN)
-                .when()
-                .delete(BASE_URL + endpoint)
-                .then()
-                .log().all()
-                .statusCode(statusCode)
-                .extract().body().asString();
-        }
-
-        public String patch(String endpoint, String requestBody, int statusCode) {
-            return given()
-                .header("Content-Type", "application/json")
-                .auth()
-                .preemptive()
-                .basic(EMAIL, ACCESS_TOKEN)
-                .body(requestBody)
-                .when()
-                .patch(BASE_URL + endpoint)
-                .then()
-                .log().all()
                 .statusCode(statusCode)
                 .extract().body().asString();
         }

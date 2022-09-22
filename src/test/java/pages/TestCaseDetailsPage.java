@@ -1,4 +1,4 @@
-package pages.test_case;
+package pages;
 
 import elements.ListItemTable;
 import elements.ListItemText;
@@ -12,7 +12,7 @@ import models.TestStep;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.HomePage;
+
 
 import java.util.List;
 

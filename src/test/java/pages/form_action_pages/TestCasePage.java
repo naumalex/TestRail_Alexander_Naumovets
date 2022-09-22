@@ -1,6 +1,6 @@
 package pages.form_action_pages;
 
-import elements.DropDownList;
+import elements.dropdown_list.DropDownList;
 import elements.Input;
 import elements.StepInput;
 import enums.test_case.Template;
@@ -8,9 +8,6 @@ import models.TestCase;
 import models.TestStep;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.HomePage;
 
 import java.util.List;
 
@@ -22,12 +19,21 @@ public class TestCasePage extends BaseFormActionPage {
     private static final By ADD_STEP_LINK_LOCATOR = By.xpath(
         "//a[@class='addStep' and text() = 'Add Step']");
 
+    private static final By TITLE_FIELD_LOCATOR = By.cssSelector("#title");
     public TestCasePage(WebDriver driver) {
         super(driver);
     }
 
+    @Override
+    public void waitForPageLoaded() {
+        super.waitForPageLoaded();
+        waitForElementToBeClickable(TITLE_FIELD_LOCATOR);
+    }
+
     public void fillForm(TestCase inputTestCase) {
+
         new Input(driver, "title").setText(inputTestCase.getTitle());
+
         new DropDownList(driver, "section_id").selectByVisibleText(
             inputTestCase.getSection());
 

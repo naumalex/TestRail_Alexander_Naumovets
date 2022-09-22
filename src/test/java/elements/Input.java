@@ -3,7 +3,6 @@ package elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Input extends BaseInputElement {
 
@@ -20,12 +19,11 @@ public class Input extends BaseInputElement {
         }
         WebElement element = waitForElementToBeClickable(inputLocator);
         element.clear();
+        element.click();
         element.sendKeys(text);
     }
 
     public String getText() {
-        WebElement element = driver.findElement(inputLocator);
-        scrollIntoView(element);
-        return element.getAttribute("value");
+        return waitForElementToBeClickable(inputLocator).getAttribute("value");
     }
 }

@@ -14,9 +14,9 @@ public class ProjectAdaptor extends BaseAdaptor {
             }.getType());
     }
 
-    public Response<Project> createProject(int statusCode, String requestBody) {
+    public Project createProject(int statusCode, String requestBody) {
         return gson.fromJson(post("add_project", statusCode, requestBody),
-            new TypeToken<Response<Project>>() {
+            new TypeToken<Project>() {
             }.getType());
     }
 

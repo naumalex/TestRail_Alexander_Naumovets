@@ -1,9 +1,5 @@
 package tests;
 
-import lombok.extern.log4j.Log4j2;
-import models.Project;
-import models.api.Response;
-import org.apache.hc.core5.http.HttpStatus;
 import utils.DriverFactory;
 import utils.PropertyReader;
 import org.openqa.selenium.WebDriver;
@@ -11,11 +7,10 @@ import org.testng.ITestContext;
 import org.testng.annotations.*;
 import steps.LoginSteps;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-
+    public static final String PROJECT_NAME = PropertyReader.getProperty("test_rail.all.project_name");
     protected WebDriver driver;
     protected LoginSteps loginSteps;
 
@@ -45,12 +40,12 @@ public class BaseTest {
             PropertyReader.getProperty("test_rail.all.password"));
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
-       loginSteps.logout();
+        loginSteps.logout();
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void quit() {
         driver.quit();
     }

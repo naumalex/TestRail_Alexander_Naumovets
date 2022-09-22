@@ -16,6 +16,9 @@ public class HomePage extends BasePage {
         "#content-inner .message.message-success");
     private final static String SIDE_NAVIGATION_MENU_ITEM =
         "//div[@id = 'sidebar']//li/a[text()='%s']";
+    private final static String TOP_NAVIGATION_MENU_ITEM =
+        "//div[@id='header']//a[text()='%s']";
+    private final By PROJECT_DETAILS_LINK = By.cssSelector("#navigation-project");
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -49,4 +52,13 @@ public class HomePage extends BasePage {
         waitForElementToBeClickable(By.xpath(String.format(SIDE_NAVIGATION_MENU_ITEM, menuItem)))
         .click();
     }
+
+    public void selectItemInTopNavigationMenu(String menuItem) {
+        waitForElementToBeClickable(By.xpath(String.format(TOP_NAVIGATION_MENU_ITEM, menuItem)))
+            .click();
+    }
+    public void openProjectDetails() {
+        waitForElementToBeClickable(PROJECT_DETAILS_LINK).click();
+    }
+
 }

@@ -2,7 +2,6 @@ package data_providers;
 
 import org.testng.annotations.DataProvider;
 import utils.ProjectFactory;
-import utils.TestCaseFactory;
 
 public class ProjectDataProvider {
     @DataProvider(name = "addProjectDataProvider")

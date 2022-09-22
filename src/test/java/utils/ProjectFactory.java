@@ -9,18 +9,16 @@ public class ProjectFactory {
 
     public static Project getMandatoryInfoOnlyProject() {
         return Project.builder()
-            .name(PropertyReader.getProperty("test_rail.all.project_name"))
+            .name(PropertyReader.getProperty("test_rail.all.project_name") + Utils.getDateTime())
             .build();
     }
 
     public static Project getFullInfoProject() {
         return Project.builder()
-            .name(PropertyReader.getProperty("test_rail.all.project_name"))
+            .name(PropertyReader.getProperty("test_rail.all.project_name") + Utils.getDateTime())
             .announcement(faker.harryPotter().quote())
             .isShowAnnouncement(true)
-            .suiteMode(SuiteMode.USE_SINGLE_REPOSITORY_WITH_BASE_LINE_SUPPORT)
+            .suiteMode(SuiteMode.USE_SINGLE_REPOSITORY_FOR_ALL_CASES)
             .build();
     }
-
-
 }
