@@ -50,7 +50,7 @@ public abstract class BaseItemsPage extends HomePage {
         By deleteIconLocator = By.xpath(
             String.format(DELETE_LIST_ITEM_ICON_XPATH_EXPRESSION, itemText));
         WebElement element = driver.findElement(deleteIconLocator);
-        new Actions(driver).moveToElement(element).build().perform();
+        //new Actions(driver).moveToElement(element).build().perform();
         waitForElementToBeClickable(deleteIconLocator).click();
     }
 
