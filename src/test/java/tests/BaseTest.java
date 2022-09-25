@@ -45,7 +45,7 @@ public class BaseTest {
         loginSteps.logout();
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass()
     public void quit() {
         driver.quit();
     }
