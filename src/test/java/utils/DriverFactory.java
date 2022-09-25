@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
@@ -17,7 +18,6 @@ public class DriverFactory {
                 options.addArguments("--ignore-certificate-errors");
                 options.addArguments("--disable-popup-blocking");
                 options.addArguments("--disable-notifications");
-                options.addArguments("--headless");
                 driver = new ChromeDriver(options);
                 break;
             case "FIREFOX":
@@ -27,6 +27,8 @@ public class DriverFactory {
             case "EDGE":
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.setCapability("headless", true);
                 break;
             default:
                 throw new Exception("Undefined Browser Type");
