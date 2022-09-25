@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
     public static WebDriver getDriver(String browserName) throws Exception {
@@ -22,6 +23,10 @@ public class DriverFactory {
                 break;
             case "FIREFOX":
                 WebDriverManager.firefoxdriver().setup();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addArguments("--ignore-certificate-errors");
+                firefoxOptions.addArguments("--disable-popup-blocking");
+                firefoxOptions.addArguments("--disable-notifications");
                 driver = new FirefoxDriver();
                 break;
             case "EDGE":
