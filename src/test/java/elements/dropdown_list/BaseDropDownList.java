@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.AllureUtils;
 
@@ -45,12 +46,12 @@ public abstract class BaseDropDownList extends BaseElement {
     protected abstract By getDropdownListItemsLocator();
 
     private void expandListOfOptions() {
-        AllureUtils.attachScreenshot(driver);
         WebElement element = waitForElementToBeClickable(getDropdownListLocator());
-        AllureUtils.attachScreenshot(driver);
         waitUtilBlockUINotDisplayed();
         AllureUtils.attachScreenshot(driver);
-        element.click();
+        Actions actions = new Actions(driver);
+        log.info(element.getText());
+        actions.moveToElement(element).click().build().perform();
         AllureUtils.attachScreenshot(driver);
     }
 
@@ -61,6 +62,7 @@ public abstract class BaseDropDownList extends BaseElement {
             .ifPresentOrElse(p -> {
                     if (!p.isDisplayed()) {
                         scrollIntoView(p);
+                        AllureUtils.attachScreenshot(driver);
                     }
                     wait.until(ExpectedConditions.visibilityOf(p));
                     wait.until(ExpectedConditions.elementToBeClickable(p));
