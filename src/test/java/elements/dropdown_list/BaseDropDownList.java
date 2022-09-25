@@ -64,7 +64,10 @@ public abstract class BaseDropDownList extends BaseElement {
                         scrollIntoView(p);
                         AllureUtils.attachScreenshot(driver);
                     }
+                    log.info("Attribute  text: " + p.getAttribute("textContent"));
                     log.info("Element text: " + p.getText());
+                    log.info("Element tag: " + p.getTagName());
+                    log.info("Is Displayed: " + p.isDisplayed());
                     wait.until(ExpectedConditions.visibilityOf(p));
                     wait.until(ExpectedConditions.elementToBeClickable(p));
                     waitUtilBlockUINotDisplayed();
