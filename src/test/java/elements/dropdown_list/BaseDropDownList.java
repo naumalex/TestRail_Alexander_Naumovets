@@ -48,8 +48,7 @@ public abstract class BaseDropDownList extends BaseElement {
     private void expandListOfOptions() {
         WebElement element = waitForElementToBeClickable(getDropdownListLocator());
         waitUtilBlockUINotDisplayed();
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).click().build().perform();
+        element.click();
     }
 
     private void selectOption(String option) {
