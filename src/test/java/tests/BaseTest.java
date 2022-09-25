@@ -1,5 +1,6 @@
 package tests;
 
+import utils.AllureUtils;
 import utils.DriverFactory;
 import utils.PropertyReader;
 import org.openqa.selenium.WebDriver;
@@ -42,6 +43,7 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
+        AllureUtils.attachScreenshot(driver);
         loginSteps.logout();
     }
 

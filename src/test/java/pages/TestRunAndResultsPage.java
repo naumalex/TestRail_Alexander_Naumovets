@@ -23,11 +23,16 @@ public class TestRunAndResultsPage extends HomePage {
     public void waitForPageLoaded() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(
             getPageHeaderLocator("Test Run")));
+        wait.until(p -> !getListOfTestCaseTitles().isEmpty());
     }
 
     public List<String> getListOfTestCaseTitles() {
         return driver.findElements(TEST_CASES_LIST_TITLE_LOCATOR).stream()
             .map(p ->p.getAttribute("innerText")).toList();
+    }
+
+    public boolean isListOfTestCasesLoaded(WebDriver driver) {
+        return getListOfTestCaseTitles().isEmpty();
     }
 
     public void selectStatusInTestResultDropdown(String testCaseTitle, TestResult testResult) {
