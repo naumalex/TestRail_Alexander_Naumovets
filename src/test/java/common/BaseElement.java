@@ -22,7 +22,7 @@ public class BaseElement {
 
     public void scrollIntoView(WebElement element) {
         ((JavascriptExecutor)driver)
-            .executeScript("arguments[0].scrollIntoView(true); window.scrollBy(0,50)", element);
+            .executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
 
