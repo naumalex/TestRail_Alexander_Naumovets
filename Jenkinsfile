@@ -18,7 +18,7 @@
 
         choice (
                 name: 'BROWSER',
-                choices: ['chrome', 'edge', 'firefox']
+                choices: ['chrome', 'firefox']
                 )
       }
 
