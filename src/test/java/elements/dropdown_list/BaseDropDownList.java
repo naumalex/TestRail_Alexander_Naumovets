@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.AllureUtils;
 
 @Log4j2
 public abstract class BaseDropDownList extends BaseElement {
@@ -44,9 +45,13 @@ public abstract class BaseDropDownList extends BaseElement {
     protected abstract By getDropdownListItemsLocator();
 
     private void expandListOfOptions() {
+        AllureUtils.attachScreenshot(driver);
         WebElement element = waitForElementToBeClickable(getDropdownListLocator());
+        AllureUtils.attachScreenshot(driver);
         waitUtilBlockUINotDisplayed();
+        AllureUtils.attachScreenshot(driver);
         element.click();
+        AllureUtils.attachScreenshot(driver);
     }
 
     private void selectOption(String option) {
@@ -54,9 +59,9 @@ public abstract class BaseDropDownList extends BaseElement {
             .filter(p -> p.getAttribute("textContent").replace("\n", "").trim()
                 .equals(option)).findFirst()
             .ifPresentOrElse(p -> {
-                    //if (!p.isDisplayed()) {
+                    if (!p.isDisplayed()) {
                         scrollIntoView(p);
-                    //}
+                    }
                     wait.until(ExpectedConditions.visibilityOf(p));
                     wait.until(ExpectedConditions.elementToBeClickable(p));
                     waitUtilBlockUINotDisplayed();
