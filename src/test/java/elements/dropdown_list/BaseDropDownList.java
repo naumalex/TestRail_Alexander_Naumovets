@@ -48,11 +48,8 @@ public abstract class BaseDropDownList extends BaseElement {
     private void expandListOfOptions() {
         WebElement element = waitForElementToBeClickable(getDropdownListLocator());
         waitUtilBlockUINotDisplayed();
-        AllureUtils.attachScreenshot(driver);
         Actions actions = new Actions(driver);
-        log.info("Expand List" + element.getText());
         actions.moveToElement(element).click().build().perform();
-        AllureUtils.attachScreenshot(driver);
     }
 
     private void selectOption(String option) {
@@ -62,12 +59,7 @@ public abstract class BaseDropDownList extends BaseElement {
             .ifPresentOrElse(p -> {
                     if (!p.isDisplayed()) {
                         scrollIntoView(p);
-                        AllureUtils.attachScreenshot(driver);
                     }
-                    log.info("Attribute  text: " + p.getAttribute("textContent"));
-                    log.info("Element text: " + p.getText());
-                    log.info("Element tag: " + p.getTagName());
-                    log.info("Is Displayed: " + p.isDisplayed());
                     wait.until(ExpectedConditions.visibilityOf(p));
                     wait.until(ExpectedConditions.elementToBeClickable(p));
                     waitUtilBlockUINotDisplayed();

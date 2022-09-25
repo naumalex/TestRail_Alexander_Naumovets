@@ -31,10 +31,6 @@ public class TestRunAndResultsPage extends HomePage {
             .map(p ->p.getAttribute("innerText")).toList();
     }
 
-    public boolean isListOfTestCasesLoaded(WebDriver driver) {
-        return getListOfTestCaseTitles().isEmpty();
-    }
-
     public void selectStatusInTestResultDropdown(String testCaseTitle, TestResult testResult) {
         new TestResultDropDownList(driver, testCaseTitle).selectByEnumValue(testResult);
     }
