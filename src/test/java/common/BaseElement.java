@@ -22,8 +22,9 @@ public class BaseElement {
 
     public void scrollIntoView(WebElement element) {
         ((JavascriptExecutor)driver)
-            .executeScript("arguments[0].scrollIntoView(true);", element);
+            .executeScript("arguments[0].scrollIntoView(true); window.scrollBy(0,50)", element);
     }
+
 
     public boolean isElementPresent(By locator) {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
