@@ -54,9 +54,9 @@ public abstract class BaseDropDownList extends BaseElement {
             .filter(p -> p.getAttribute("textContent").replace("\n", "").trim()
                 .equals(option)).findFirst()
             .ifPresentOrElse(p -> {
-                    if (!p.isDisplayed()) {
+                    //if (!p.isDisplayed()) {
                         scrollIntoView(p);
-                    }
+                    //}
                     wait.until(ExpectedConditions.visibilityOf(p));
                     wait.until(ExpectedConditions.elementToBeClickable(p));
                     waitUtilBlockUINotDisplayed();
