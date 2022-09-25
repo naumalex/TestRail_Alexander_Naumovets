@@ -27,7 +27,7 @@ public class DriverFactory {
                 firefoxOptions.addArguments("--ignore-certificate-errors");
                 firefoxOptions.addArguments("--disable-popup-blocking");
                 firefoxOptions.addArguments("--disable-notifications");
-                driver = new FirefoxDriver();
+                driver = new FirefoxDriver(firefoxOptions);
                 break;
             case "EDGE":
                 WebDriverManager.edgedriver().setup();
