@@ -74,6 +74,7 @@ public class ProjectDetailsSteps {
         Assert.assertEquals(testRunAndResultsPage.getSaveResultsMessageText(),
             "Successfully added the new test run.",
             "Message different from expected is shown after saving a test run");
+        testRunAndResultsPage.waitForPageLoaded();
     }
 
     @Step
