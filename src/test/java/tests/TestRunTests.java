@@ -54,7 +54,7 @@ public class TestRunTests extends BaseTest {
         dashboardSteps.openProject(projectName);
         projectDetailsSteps.addTestCasesViaSideBar(testCases);
         projectDetailsSteps.addTestRunViaSideBar(inputTestRun);
-        testRunAndResultsSteps.addTestResult(testCases.get(0).getTitle(), TestResult.PASSED);
+        testRunAndResultsSteps.addTestResult(testCases.get(1).getTitle(), TestResult.PASSED);
     }
    @BeforeMethod(alwaysRun = true)
     public void ensureUniqueProjectWithMilestone() {
