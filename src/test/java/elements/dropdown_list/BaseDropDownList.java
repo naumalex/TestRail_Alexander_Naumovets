@@ -50,7 +50,7 @@ public abstract class BaseDropDownList extends BaseElement {
         waitUtilBlockUINotDisplayed();
         AllureUtils.attachScreenshot(driver);
         Actions actions = new Actions(driver);
-        log.info(element.getText());
+        log.info("Expand List" + element.getText());
         actions.moveToElement(element).click().build().perform();
         AllureUtils.attachScreenshot(driver);
     }
